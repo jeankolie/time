@@ -3,6 +3,8 @@ use Carbon\Carbon;
 use Illuminate\Support\Arr;
 use App\Models\{Media, Parametre};
 use Illuminate\Support\Facades\Storage;
+use \PhpOffice\PhpSpreadsheet\Reader\Xlsx;
+use \PhpOffice\PhpSpreadsheet\Writer\Csv;
 
 function clear_image_directorie($classe, $path = 'public/media'){
 	$deletes = collect();
@@ -172,6 +174,37 @@ function optimize_image($path, $size = false){
     } catch (\Tinify\Exception $e) {
         // dd($e->getMessage());
     }
+}
+
+function excel_to_csv($file){
+    $reader = new Xlsx();
+    $spreadsheet = $reader->load($file);
+
+    $loadedSheetNames = $spreadsheet->getSheetNames();
+
+    $writer = new Csv($spreadsheet);
+
+    foreach($loadedSheetNames as $sheetIndex => $loadedSheetName) {
+        $writer->setSheetIndex($sheetIndex);
+        $writer->save(storage_path('app/certificat.csv'));
+    }
+}
+
+function is_excel_file($file){
+	if ($file->getMimetype()) {
+		return preg_match('#application/vnd#', $file->getMimetype());
+	}
+
+	return false;
+}
+
+function is_csv_file($file){
+
+	if ($file->getMimetype()) {
+		return preg_match('#text/plain#', $file->getMimetype());
+	}
+
+	return false;
 }
 
 ?>

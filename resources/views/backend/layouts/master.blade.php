@@ -11,6 +11,9 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
 
+        <!-- Plugins css -->
+        <link href="{{ asset('backend/assets/libs/dropify/css/dropify.min.css') }}" rel="stylesheet" type="text/css" />
+
 		<!-- App css -->
 		<link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" id="bs-default-stylesheet" />
 		<link href="{{ asset('backend/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" id="app-default-stylesheet" />
@@ -303,6 +306,9 @@
 
         <!-- Vendor js -->
         <script src="{{ asset('backend/assets/js/vendor.min.js') }}"></script>
+
+        <!-- Plugins js -->
+        <script src="{{ asset('backend/assets/libs/dropify/js/dropify.min.js') }}"></script>
 
         <script src="{{ asset('backend/assets/libs/dropify/js/dropify.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('backend/assets/libs/jquery-confirm/jquery-confirm.min.js') }}"></script>

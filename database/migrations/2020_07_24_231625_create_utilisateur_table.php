@@ -17,9 +17,9 @@ class CreateUtilisateurTable extends Migration
             $table->integer('id_utilisateur')->autoIncrement();
             $table->string('uuid')->nullable();
             $table->string('matricule')->nullable();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('telephone')->unique();
+            $table->string('nom')->nullable();
+            $table->string('prenom')->nullable();
+            $table->string('telephone')->unique()->nullable();
             $table->string('email')->unique()->nullable();
             $table->string('password')->nullable();
             $table->integer('type')->default(1);

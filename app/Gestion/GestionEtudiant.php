@@ -8,7 +8,6 @@ use App\Models\{Annee, Utilisateur, Inscrire};
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-
 class GestionEtudiant
 {
 	

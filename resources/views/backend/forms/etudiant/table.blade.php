@@ -15,7 +15,8 @@
 		        <th>#</th>
 		        <th>{{ __('Matricule') }}</th>
 		        <th>{{ __('Nom et Prenom') }}</th>
-		        <th>{{ __('Contact') }}</th>
+		        <th>{{ __('Telephone') }}</th>
+		        <th>{{ __('Email') }}</th>
 		        <th class="text-right">{{ __('Actions') }}</th>
 		    </tr>
 		</thead>
@@ -26,11 +27,12 @@
 			        <td>{{ $inscription->utilisateur->matricule }}</td>
 			        <td>{{ $inscription->utilisateur->nom }} {{ $inscription->utilisateur->prenom }}</td>
 			        <td>{{ $inscription->utilisateur->telephone }}</td>
+			        <td>{{ $inscription->utilisateur->email }}</td>
 			        <td class="text-right">
-			        	<a class="btn btn-primary btn-sm" href="{{ route('etudiants.edit', $inscription->utilisateur->uui) }}">
+			        	<a class="btn btn-primary btn-sm" href="{{ route('etudiants.edit', $inscription->utilisateur->uuid) }}">
 			        		{{ __('Modifier') }}
 			        	</a>
-			        	<a class="btn btn-delete btn-danger btn-sm" href="{{ route('etudiants.destroy', $inscription->utilisateur->uui) }}">
+			        	<a class="btn btn-delete btn-danger btn-sm" href="{{ route('etudiants.destroy', $inscription->utilisateur->uuid) }}">
 			        		{{ __('Supprimer') }}
 			        	</a>
 			        </td>

@@ -84,6 +84,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/etudiants/{annee}', 'EtudiantController@index');
         Route::resource('emplois', 'EmploiController');
         Route::get('/emplois/{departement}/{licence}/{semestre}', 'EmploiController@index');
+
+        Route::post('/import/eleve', 'ImportController@eleve');
     });
 
     Route::get('/home', 'HomeController@home');

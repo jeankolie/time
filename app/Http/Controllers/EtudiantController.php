@@ -62,7 +62,7 @@ class EtudiantController extends Controller
     public function edit($id)
     {
         return view('backend.forms.etudiant.edit', [
-            'inscription' => Utilisateur::whereUui($id)->first()->inscrires()->orderBy('id_annee', 'DESC')->first()
+            'inscription' => Utilisateur::whereUuid($id)->first()->inscrires()->orderBy('id_annee', 'DESC')->first()
         ]);
 
         return view('backend.index', [

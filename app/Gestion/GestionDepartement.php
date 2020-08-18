@@ -6,7 +6,7 @@ namespace App\Gestion;
 
 use App\Models\{Departement, Licence, Semestre, Associer};
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Auth;
 
 class GestionDepartement
 {
@@ -102,6 +102,23 @@ class GestionDepartement
 			'nom' => "Semestre $ordre",
 			'slug' => Str::slug("Semestre $ordre"),
 			'id_licence' => $licence->id_licence
+		]);
+	}
+
+	public function setImportSettings($data)
+	{
+		$settings = collect([
+			'nom' => ($data->has('nom')) ? $data->nom:'',
+			'prenom' => ($data->has('prenom')) ? $data->prenom:'',
+			'telephone' => ($data->has('telephone')) ? $data->telephone:'',
+			'matricule' => ($data->has('matricule')) ? $data->matricule:'',
+			'email' => ($data->has('email')) ? $data->email:''
+		]);
+
+		$departement = Auth::user()->departement;
+
+		$departement->update([
+			'import' => $settings->all()
 		]);
 	}
 }

@@ -16,7 +16,7 @@ class CreateInscrireTable extends Migration
         Schema::create('inscrire', function (Blueprint $table) {
             $table->integer('id_annee');
             $table->integer('id_utilisateur');
-            $table->integer('id_licence');
+            $table->integer('id_licence')->nullable();
             $table->date('date_inscription')->nullable();
 
             $table->foreign('id_annee')

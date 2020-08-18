@@ -33,7 +33,7 @@ class Departement extends Model
     /**
      * @var array
      */
-    protected $fillable = ['id_utilisateur', 'nom', 'slug'];
+    protected $fillable = ['id_utilisateur', 'nom', 'slug', 'import'];
 
     /**
      * Indicates if the model should be timestamped.
