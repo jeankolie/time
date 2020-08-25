@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         @include('backend.layouts.info')
-        <h4 class="header-title text-center">{{ __('Creer une categorie') }}</h4>
+        <h4 class="header-title text-center">{{ __('Creer une salle') }}</h4>
         <form enctype="multipart/form-data" action="{{ route('salles.store') }}" method="POST">
             <input type="hidden" name="operation" value="1">
             @csrf                       

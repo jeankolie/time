@@ -1,6 +1,6 @@
 <div class="card">
     <div class="card-body">
-        <h4 class="mb-3 header-title">Basic Example</h4>
+        <h4 class="mb-3 header-title">/h4>
         <form action="" method="POST">
             @csrf                       
             <div class="form-group">
