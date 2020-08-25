@@ -25,7 +25,7 @@
 		        </p>
 		        
 		        <div class="table-responsive">
-		            <table class="table table-bordered mb-0 table-sm">
+		            <table class="table table-bordered mb-2 table-sm">
 		                <thead>
 		                    <tr>
 		                        <th>#</th>
@@ -42,15 +42,22 @@
 			                        	<a class="btn btn-primary btn-xs" href="{{ route('matieres.edit', $matiere->slug) }}">
 			                        		{{ __('Modifier') }}
 			                        	</a>
-			                        	<a class="btn btn-delete btn-danger btn-xs" href="{{ route('matieres.destroy', $matiere->slug) }}">
-			                        		{{ __('Supprimer') }}
-			                        	</a>
+			                        	@if ($edit AND !$matiere->is($update))
+			                        		<a class="btn btn-delete btn-danger btn-xs" href="{{ route('matieres.destroy', $matiere->slug) }}">
+				                        		{{ __('Supprimer') }}
+				                        	</a>
+			                        	@elseif(!$edit)
+			                        		<a class="btn btn-delete btn-danger btn-xs" href="{{ route('matieres.destroy', $matiere->slug) }}">
+				                        		{{ __('Supprimer') }}
+				                        	</a>
+			                        	@endif
 			                        </th>
 			                    </tr>
 		                	@endforeach
 			                    
 		                </tbody>
 		            </table>
+		            {{ $matieres->links() }}
 		        </div> <!-- end .table-responsive-->
 		    </div>
     	</div>

@@ -26,7 +26,7 @@
                             @endphp
                             <b>{{ $emploi->matiere->nom }}</b><br>
                             <b>{{ $emploi->salle->nom }}</b><br>
-                            {{ $emploi->utilisateur->nomComplet() }}<br>
+                            {{ $emploi->utilisateur->nomComplet() }} [{{ $emploi->utilisateur->telephone }}]<br>
                             @php
                                 $s = $semestre->id_semestre;
                             @endphp

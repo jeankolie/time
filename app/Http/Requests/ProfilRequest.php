@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
-class PersonnelCreateRequest extends FormRequest
+class ProfilRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +25,12 @@ class PersonnelCreateRequest extends FormRequest
 
     public function createStatement()
     {
+        $id = Auth::user()->id_utilisateur;
         return [
             'nom' => 'required',
-            'telephone' => 'required|unique:utilisateur',
-            'email' => 'required|unique:utilisateur'
+            'prenom' => 'required',
+            'email' => ['required', 'email', Rule::unique('utilisateur')->ignore($id, 'id_utilisateur')],
+            'telephone' => ['required', Rule::unique('utilisateur')->ignore($id, 'id_utilisateur')]
         ];
     }
 
@@ -34,7 +38,8 @@ class PersonnelCreateRequest extends FormRequest
     {
         $id = $this->annee;
         return [
-            'nom' => 'required',
+            'ancien' => 'required|password:web',
+            'password' => 'required|confirmed'
         ];
     }
 }

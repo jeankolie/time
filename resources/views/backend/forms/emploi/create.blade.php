@@ -75,7 +75,7 @@
                                     <label>{{ __('Professeur') }}:</label>
                                     <select class="form-control listen" name="professeur">
                                         @foreach ($professeurs as $professeur)
-                                            <option value="{{ $professeur->id_utilisateur }}">{{ $professeur->nomComplet() }}</option>
+                                            <option value="{{ $professeur->id_utilisateur }}">{{ $professeur->nomComplet() }} [{{ $professeur->telephone }}]</option>
                                         @endforeach
                                     </select>
                                 </div>

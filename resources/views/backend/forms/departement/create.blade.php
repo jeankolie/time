@@ -14,7 +14,7 @@
                 <label>{{ __('Chef de departement') }}</label>
                 <select class="form-control" name="responsable">
                     @foreach ($utilisateurs as $utilisateur)
-                        <option value="{{ $utilisateur->id_utilisateur }}">{{ $utilisateur->nomComplet() }}</option>
+                        <option value="{{ $utilisateur->id_utilisateur }}">{{ $utilisateur->nomComplet() }} [{{ $utilisateur->telephone }}]</option>
                     @endforeach
                 </select>
             </div>
