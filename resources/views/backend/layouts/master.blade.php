@@ -38,7 +38,11 @@
             <div class="navbar-custom">
                 <div class="container-fluid">
                     <ul class="list-unstyled topnav-menu float-right mb-0">
-    
+                        <li class="text" >
+                           <a class="nav-link dropdown-toggle aria-haspopup=" >
+                                <i class="fe- noti-icon" style="color: white;">{{ __('Departement: :dep', ['dep' => Auth::user()->departement->nom]) }}</i>
+                            </a> 
+                        </li>
                         <li class="dropdown d-inline-block d-lg-none">
                             <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
                                 <i class="fe-search noti-icon"></i>
@@ -49,7 +53,7 @@
                                 </form>
                             </div>
                         </li>
-    
+                            
                         <li class="dropdown d-none d-lg-inline-block">
                             <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
                                 <i class="fe-maximize noti-icon"></i>
@@ -240,7 +244,7 @@
                                 <li>
                                     <a href="{{ route('emplois.index') }}">
                                         <i class="mdi mdi-account-group-outline"></i>
-                                        <span> {{ __('Empolis') }} </span>
+                                        <span> {{ __('Emplois') }} </span>
                                     </a>
                                 </li>
                             @endif
@@ -279,15 +283,9 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                2015 - <script>document.write(new Date().getFullYear())</script> &copy; UBold theme by <a href="">Coderthemes</a> 
+                                <script>document.write(new Date().getFullYear())</script> &copy; Tobi
                             </div>
-                            <div class="col-md-6">
-                                <div class="text-md-right footer-links d-none d-sm-block">
-                                    <a href="javascript:void(0);">About Us</a>
-                                    <a href="javascript:void(0);">Help</a>
-                                    <a href="javascript:void(0);">Contact Us</a>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </footer>

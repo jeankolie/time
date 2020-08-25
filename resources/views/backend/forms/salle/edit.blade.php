@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         @include('backend.layouts.info')
-        <h4 class="header-title text-center">{{ __('Modifier une salle') }}</h4>
+        <h4 class="header-title text-center">{{ __('Modifier la salle') }}</h4>
         <form enctype="multipart/form-data" action="{{ route('salles.update', $update->id_salle) }}" method="POST">
             <input type="hidden" name="operation" value="0">
             @csrf

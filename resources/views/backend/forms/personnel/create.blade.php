@@ -1,7 +1,7 @@
 <div class="card">
     <div class="card-body">
         @include('backend.layouts.info')
-        <h4 class="header-title text-center">{{ __('Creer une categorie') }}</h4>
+        <h4 class="header-title text-center">{{ __('Creer un personnel') }}</h4>
         <form enctype="multipart/form-data" action="{{ route('departements.create') }}" method="GET">
             <input type="hidden" name="operation" value="1">
             <input type="hidden" name="departement" value="{{ $departement->id_departement }}">

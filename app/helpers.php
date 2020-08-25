@@ -61,7 +61,8 @@ function horaires(){
 	return [
 		'08H-11H',
 		'11H-14H',
-		'14H-16H'
+		'14H-17H',
+		'17H-20H'
 	];
 }
 

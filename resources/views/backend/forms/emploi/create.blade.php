@@ -1,7 +1,7 @@
 <div class="card">
                 <div class="card-body">
                     
-                    <h4 class="header-title text-center">{{ __('Creer une categorie') }}</h4>
+                    <h4 class="header-title text-center">{{ __('Elaborez votre emploi') }}</h4>
                     <h5 class="alert alert-danger" id="message" style="display: none;"></h5>
                     @include('backend.layouts.info')
                     <form id="form" enctype="multipart/form-data" action="{{ route('emplois.store') }}" method="POST">

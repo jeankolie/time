@@ -1,13 +1,13 @@
 <div class="card">
     <div class="card-body">
         @include('backend.layouts.info')
-        <h4 class="header-title text-center">{{ __('Modifier une categorie') }}</h4>
+        <h4 class="header-title text-center">{{ __('Modifier le departement') }}</h4>
         <form enctype="multipart/form-data" action="{{ route('departements.update', $update->id_departement) }}" method="POST">
             <input type="hidden" name="operation" value="0">
             @csrf
             @method('PUT')                    
             <div class="form-group">
-                <label>{{ __('Nom de la categorie') }}</label>
+                <label>{{ __('Nom du departement') }}</label>
                 <input name="nom" type="text" value="{{ old('nom') ?? $update->nom }}" class="form-control">
             </div>
 
