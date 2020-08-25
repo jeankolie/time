@@ -1,7 +1,7 @@
 <?php
 use Carbon\Carbon;
 use Illuminate\Support\Arr;
-use App\Models\{Media, Parametre};
+use App\Models\{Media, Parametre, Enseigner, Annee};
 use Illuminate\Support\Facades\Storage;
 use \PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use \PhpOffice\PhpSpreadsheet\Writer\Csv;
@@ -17,6 +17,16 @@ function clear_image_directorie($classe, $path = 'public/media'){
     }
 
     Storage::delete($deletes->all());
+}
+
+function checkSalle($salle, $jour, $heure){
+
+	$annee = Annee::orderBy('id_annee', 'DESC')->first();
+
+	return Enseigner::where('id_salle', $salle->id_salle)
+    	->where('id_annee', $annee->id_annee)
+    	->where('jour', $jour)
+    	->where('interval', $heure);
 }
 
 function generate_code($n = 8) {  
