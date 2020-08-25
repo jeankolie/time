@@ -256,7 +256,7 @@
                                 <li>
                                     <a href="{{ route('emplois.index') }}">
                                         <i class="mdi mdi-account-group-outline"></i>
-                                        <span> {{ __('Empolis') }} </span>
+                                        <span> {{ __('Emplois') }} </span>
                                     </a>
                                 </li>
                             @endif
