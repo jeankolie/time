@@ -24,7 +24,8 @@ class SalleCreateRequest extends FormRequest
     public function createStatement()
     {
         return [
-            'nom' => 'required',
+            'nom' => 'required|unique:salle',
+            'capacite' => 'required'
         ];
     }
 
@@ -33,6 +34,7 @@ class SalleCreateRequest extends FormRequest
         $id = $this->annee;
         return [
             'nom' => 'required',
+            'capacite' => 'required'
         ];
     }
 }

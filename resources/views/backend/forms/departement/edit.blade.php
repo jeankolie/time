@@ -16,7 +16,7 @@
                 <select class="form-control" name="responsable">
                     @foreach ($utilisateurs as $utilisateur)
                         <option {{ ($utilisateur->is($update->utilisateur)) ? 'selected':'' }} value="{{ $utilisateur->id_utilisateur }}">
-                            {{ $utilisateur->nomComplet() }}
+                            {{ $utilisateur->nomComplet() }} [{{ $utilisateur->telephone }}]
                         </option>
                     @endforeach
                 </select>

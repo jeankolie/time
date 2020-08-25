@@ -23,7 +23,7 @@ class GestionMatiere
 
 		if (!Auth::user()->isAdmin()) {
 			$dep = Auth::user()->departement->id_departement;
-			Associer::create([
+			Associer::firstOrCreate([
 				'id_matiere' => $matiere->id_matiere,
 				'id_departement' => $dep
 			]);

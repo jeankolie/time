@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Annee, Departement, Inscrire, Licence, Semestre, Salle, Utilisateur};
+use App\Models\{Annee, Departement, Inscrire, Licence, Semestre, Salle, Utilisateur, Enseigner};
 use App\Http\Requests\EmploiCreateRequest;
 use App\Gestion\GestionEmploi;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class EmploiController extends Controller
 {
@@ -49,6 +50,39 @@ class EmploiController extends Controller
      */
     public function store(EmploiCreateRequest $request, GestionEmploi $gestion)
     {
+        $annee = Annee::orderBy('id_annee', 'DESC')->first();
+
+        $salle = Enseigner::where('id_salle', $request->salle)
+            ->where('id_annee', $annee->id_annee)
+            ->where('jour', $request->jour)
+            ->where('interval', $request->horaire);
+
+        $professeur = Enseigner::where('id_utilisateur', $request->professeur)
+            ->where('id_annee', $annee->id_annee)
+            ->where('jour', $request->jour)
+            ->where('interval', $request->horaire);
+
+        if ($salle->count()) {
+            $emp = $salle->first();
+            $message = trans("Desoler cette salle est occuper le :jour de :heure par :prof", [
+                'jour' => $emp->jour,
+                'heure' => $emp->interval,
+                'prof' => $emp->utilisateur->nomComplet()
+            ]);
+
+            return back()->with('msg', $message);
+
+        }elseif ($professeur->count()) {
+            $emp = $professeur->first();
+            $message = trans("Desoler cet professeur est programmer le :jour de :heure dans la salle :salle", [
+                'jour' => $emp->jour,
+                'heure' => $emp->interval,
+                'salle' => $emp->salle->nom
+            ]);
+            return back()->with('msg', $message);
+        }
+
+
         return back()->with('info', $gestion->store($request));
     }
 
@@ -58,9 +92,22 @@ class EmploiController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        Validator::make($request->all(), [
+            'niveau-message' => 'required',
+            'message' => 'required',
+        ])->validate();
+
+        $niveau = Auth::user()->departement->licences()->where('id_licence', $request->input('niveau-message'))->first();
+        foreach ($niveau->inscrires as $key => $inscrire) {
+            send_sms(
+                $request->message, 
+                $inscrire->utilisateur->telephone
+            );
+        }
+
+        return back()->with('info', "Message envoye avec succes");
     }
 
     /**

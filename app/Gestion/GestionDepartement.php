@@ -29,7 +29,7 @@ class GestionDepartement
 
 		if ($data->has('matiere')) {
 			foreach ($data->matiere as $key => $matiere) {
-				Associer::create([
+				Associer::firstOrCreate([
 					'id_matiere' => $matiere,
 					'id_departement' => $dep->id_departement
 				]);

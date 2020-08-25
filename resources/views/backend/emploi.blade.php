@@ -42,10 +42,14 @@
 			                @endforeach
 	                    </div>
                 	@endforeach
-	                    
                 </div>
             </div> <!-- end card-box-->
     	</div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            @include('backend.forms.emploi.message', ['some' => 'data'])
+        </div>
     </div>
     <input type="hidden" name="message-suppression" value="Etes-vous sure de vouloir suprimer ce programme ?">
 @endsection
@@ -80,7 +84,7 @@
                             $("#message").text(data.message).fadeIn("slow", function () {
                                 setTimeout(function () {
                                     $("#message").fadeOut("slow");
-                                }, 3000);
+                                }, 6000);
                             });
                         }
                     },

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\{Matiere};
-use App\Http\Requests\MatiereCreateRequest;
-use App\Gestion\GestionMatiere;
+use App\Models\{Matiere, Departement};
+use App\Http\Requests\ProfesseurCreateRequest;
+use App\Gestion\GestionProfesseur;
 use Illuminate\Support\Facades\Auth;
 
-class MatiereController extends Controller
+class ProfesseurController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,9 @@ class MatiereController extends Controller
      */
     public function index()
     {
-        return view('backend.matiere', [
-            'form' => 'backend.forms.matiere.create',
-            'matieres' => (Auth::user()->isAdmin()) ? Matiere::paginate(10):Auth::user()->departement->matieres()->paginate(10),
-            'edit' => false
+        return view('backend.professeur', [
+            'form' => 'backend.forms.professeur.create',
+            'professeurs' => Auth::user()->departement->utilisateurs()->paginate(10),
         ]);
     }
 
@@ -40,7 +39,7 @@ class MatiereController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MatiereCreateRequest $request, GestionMatiere $gestion)
+    public function store(ProfesseurCreateRequest $request, GestionProfesseur $gestion)
     {
         return back()->with('info', $gestion->store($request));
     }
@@ -53,7 +52,7 @@ class MatiereController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -64,12 +63,7 @@ class MatiereController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.matiere', [
-            'form' => 'backend.forms.matiere.edit',
-            'matieres' => (Auth::user()->isAdmin()) ? Matiere::paginate(10):Auth::user()->departement->matieres()->paginate(10),
-            'update' => Matiere::whereSlug($id)->first(),
-            'edit' => true
-        ]);
+        //
     }
 
     /**
@@ -79,11 +73,9 @@ class MatiereController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(MatiereCreateRequest $request, GestionMatiere $gestion, $id)
+    public function update(Request $request, $id)
     {
-        return redirect()->action(
-            'MatiereController@edit', [$gestion->update($request, $id)->slug]
-        )->with('info', trans('Matiere modifier avec succes'));
+        //
     }
 
     /**
@@ -92,7 +84,7 @@ class MatiereController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(GestionMatiere $gestion, $id)
+    public function destroy(GestionProfesseur $gestion, $id)
     {
         return $gestion->delete($id);
     }

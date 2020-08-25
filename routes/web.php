@@ -69,17 +69,21 @@ Route::get('/disponibilite', function(Request $request) {
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::resource('profil', 'ProfilController');
+
     Route::middleware(['admin'])->group(function() {
         Route::resource('annees', 'AnneeController');
-        
     });
 
     Route::resource('departements', 'DepartementController');
     Route::resource('utilisateurs', 'UtilisateurController');
 
+    Route::resource('matieres', 'MatiereController');
+    Route::resource('salles', 'SalleController');
+
     Route::middleware(['personnel'])->group(function() {
-        Route::resource('matieres', 'MatiereController');
-        Route::resource('salles', 'SalleController');
+        Route::resource('professeurs', 'ProfesseurController');
+
         Route::resource('etudiants', 'EtudiantController');
         Route::get('/etudiants/{annee}', 'EtudiantController@index');
         Route::resource('emplois', 'EmploiController');

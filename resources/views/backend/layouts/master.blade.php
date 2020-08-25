@@ -49,7 +49,16 @@
                                 </form>
                             </div>
                         </li>
-    
+
+                        @if (Auth::user()->type == 2 OR Auth::user()->isChef())
+                            <li class="dropdown d-none d-lg-inline-block">
+                                <a style="font-size: 20px" class="nav-link dropdown-toggle arrow-none waves-effect waves-light text-white" data-toggle="fullscreen" href="{{ route('profil.index') }}">
+                                    {{ __('Departement: ') }}{{ Auth::user()->departement->nom }}
+                                </a>
+                            </li>
+                        @endif
+                            
+
                         <li class="dropdown d-none d-lg-inline-block">
                             <a class="nav-link dropdown-toggle arrow-none waves-effect waves-light" data-toggle="fullscreen" href="#">
                                 <i class="fe-maximize noti-icon"></i>
@@ -57,7 +66,7 @@
                         </li>
     
                         <li class="dropdown notification-list topbar-dropdown">
-                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="{{ route('profil.index') }}" role="button" aria-haspopup="false" aria-expanded="false">
                                 <img src="{{ asset('backend/assets/images/users/user-1.jpg') }}" alt="user-image" class="rounded-circle">
                                 <span class="pro-user-name ml-1">
                                     {{ Auth::user()->prenom }} {{ Auth::user()->nom }} <i class="mdi mdi-chevron-down"></i> 
@@ -221,6 +230,13 @@
                                 </li>
 
                                 <li>
+                                    <a href="{{ route('professeurs.index') }}">
+                                        <i class="mdi mdi-apps"></i>
+                                        <span> Professeurs </span>
+                                    </a>
+                                </li>
+
+                                <li>
                                     <a href="#sidebarContacts" data-toggle="collapse">
                                         <i data-feather="book"></i>
                                         <span> {{ __('Etudiants') }} </span>
@@ -244,6 +260,13 @@
                                     </a>
                                 </li>
                             @endif
+
+                            <li>
+                                <a href="{{ route('profil.index') }}">
+                                    <i class="mdi mdi-account-group-outline"></i>
+                                    <span> {{ __('Mon compte') }} </span>
+                                </a>
+                            </li>
                                 
                         </ul>
 
