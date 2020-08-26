@@ -19,7 +19,7 @@ class ProfesseurController extends Controller
     {
         return view('backend.professeur', [
             'form' => 'backend.forms.professeur.create',
-            'professeurs' => Auth::user()->departement->utilisateurs()->paginate(10),
+            'professeurs' => Auth::user()->departement->utilisateurs()->whereType(3)->paginate(10),
         ]);
     }
 

@@ -37,8 +37,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label>{{ __('Mot de passe par defaut') }}:</label>
-                            <input name="password" type="text" value="{{ old('password') }}" class="form-control">
+                            <label>{{ __('Email') }}:</label>
+                            <input name="email" type="email" value="{{ old('email') }}" class="form-control">
                         </div>
                         
                         <button type="submit" class="btn btn-primary waves-effect waves-light">

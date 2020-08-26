@@ -24,7 +24,12 @@ class EtudiantCreateRequest extends FormRequest
     public function createStatement()
     {
         return [
+            'licence' => 'required',
+            'matricule' => 'required|unique:utilisateur',
             'nom' => 'required',
+            'prenom' => 'required',
+            'email' => 'required|email|unique:utilisateur',
+            'telephone' => 'required|unique:utilisateur'
         ];
     }
 

@@ -70,6 +70,9 @@ Route::get('/disponibilite', function(Request $request) {
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('profil', 'ProfilController');
+    Route::get('/reset/password/{user}', 'PasswordResetController@reset');
+
+    Route::post('/recherche', 'RechercheController@recherche');
 
     Route::middleware(['admin'])->group(function() {
         Route::resource('annees', 'AnneeController');

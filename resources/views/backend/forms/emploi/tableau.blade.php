@@ -1,9 +1,6 @@
-<h4 class="header-title">Bordered table</h4>
-<p class="sub-header">
-	Add <code>.table-bordered</code> for borders on all sides of the table and cells.
-</p>
+<h4 class="header-title mt-0 ml-1">{{ __('Legende') }}</h4>
 		        
-<div class="table-responsive">
+<div class="table-responsive ml-1">
 	<table class="table table-bordered mb-0 table-sm">
 		<thead>
 		    <tr>

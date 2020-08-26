@@ -58,6 +58,11 @@
                             <label>{{ __('Telephone') }}:</label>
                             <input name="telephone" type="text" value="{{ old('telephone') ?? $etudiant->telephone }}" class="form-control">
                         </div>
+
+                        <div class="form-group">
+                            <label>{{ __('Email') }}:</label>
+                            <input name="email" type="email" value="{{ old('email') ?? $etudiant->email }}" class="form-control">
+                        </div>
                         
                         <button type="submit" class="btn btn-primary waves-effect waves-light">
                             {{ __('Enregistrer') }}

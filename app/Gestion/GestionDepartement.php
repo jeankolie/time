@@ -4,7 +4,7 @@ namespace App\Gestion;
  * Gestion categorie
  */
 
-use App\Models\{Departement, Licence, Semestre, Associer};
+use App\Models\{Departement, Licence, Semestre, Associer, Utilisateur};
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +17,10 @@ class GestionDepartement
 			'nom' => $data->nom,
 			'id_utilisateur' => $data->responsable,
 			'slug' => Str::slug($data->nom)
+		]);
+
+		Utilisateur::find($data->responsable)->update([
+			'id_departement' => $dep->id_departement
 		]);
 
 		for ($i=0; $i < $data->licence; $i++) { 
@@ -49,6 +53,10 @@ class GestionDepartement
 			'slug' => Str::slug($data->nom)
 		]);
 
+		Utilisateur::find($data->responsable)->update([
+			'id_departement' => $departement->id_departement
+		]);
+
 		$old = $departement->licences->count();
 
 		for ($i=0; $i < $data->licence; $i++) { 
@@ -68,9 +76,12 @@ class GestionDepartement
 			}
 		}
 
+		Associer::where('id_departement', $departement->id_departement)->delete();
+
 		if ($data->has('matiere')) {
+
 			foreach ($data->matiere as $key => $matiere) {
-				Associer::create([
+				Associer::firstOrCreate([
 					'id_matiere' => $matiere,
 					'id_departement' => $departement->id_departement
 				]);

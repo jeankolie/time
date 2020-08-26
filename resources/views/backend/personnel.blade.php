@@ -22,7 +22,7 @@
 	    	
     	<div class="col-{{ (Auth::user()->isChef() OR Auth::user()->isAdmin()) ? '8':'12' }}">
     		<div class="card-box">
-		        <h4 class="header-title">Le personnel</h4>
+		        <h4 class="header-title">La liste du personnel</h4>
 		        <p class="sub-header">
 		            
 		        </p>
@@ -43,13 +43,22 @@
 		                	@foreach ($personnels as $key => $personnel)
 		                		<tr>
 			                        <th>{{ $personnels->firstItem()+$key }}</th>
-			                        <th>{{ $personnel->prenom }} {{ $personnel->nom }}</th>
+			                        <th>
+			                        	{{ $personnel->prenom }} {{ $personnel->nom }}
+			                        	@if ($personnel->isChef())
+			                        		<span class="badge badge-info">Chef</span>
+			                        	@endif
+			                        	
+			                        </th>
 			                        <th>{{ $personnel->telephone }}</th>
 			                        <th>{{ $personnel->email }}</th>
 			                        <th>{{ get_type_utilisateur($personnel->type) }}</th>
 			                        <th class="text-right">
 			                        	@if ((!Auth::user()->is($personnel) AND Auth::user()->isChef()) OR Auth::user()->isAdmin())
-			                        		<a class="btn btn-delete btn-danger btn-block btn-xs" href="{{ route('utilisateurs.destroy', $personnel->id_utilisateur) }}">
+			                        		<a href="/reset/password/{{ $personnel->uuid }}" class="btn btn-dark btn-xs">
+			                        			{{ __('Reset') }}
+			                        		</a>
+			                        		<a class="btn btn-delete btn-danger btn-xs" href="{{ route('utilisateurs.destroy', $personnel->id_utilisateur) }}">
 				                        		{{ __('Supprimer') }}
 				                        	</a>
 			                        	@endif

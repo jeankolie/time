@@ -50,6 +50,24 @@
                             </div>
                         </li>
 
+                        <li class="d-none d-lg-block">
+                            <form class="app-search">
+                                <div class="app-search-box dropdown">
+                                    <div class="input-group">
+                                        <input style="width: 300px;" type="search" class="form-control" placeholder="Rechercher" id="top-search">
+                                        <div class="input-group-append">
+                                            <button class="btn" type="submit">
+                                                <i class="fe-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="dropdown-menu dropdown-lg" id="search-dropdown">
+                                        
+                                    </div>  
+                                </div>
+                            </form>
+                        </li>
+
                         @if (Auth::user()->type == 2 OR Auth::user()->isChef())
                             <li class="dropdown d-none d-lg-inline-block">
                                 <a style="font-size: 20px" class="nav-link dropdown-toggle arrow-none waves-effect waves-light text-white" data-toggle="fullscreen" href="{{ route('profil.index') }}">
@@ -302,13 +320,11 @@
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-6">
-                                2015 - <script>document.write(new Date().getFullYear())</script> &copy; UBold theme by <a href="">Coderthemes</a> 
+                                <script>document.write(new Date().getFullYear())</script> &copy; Tobi  
                             </div>
                             <div class="col-md-6">
                                 <div class="text-md-right footer-links d-none d-sm-block">
-                                    <a href="javascript:void(0);">About Us</a>
-                                    <a href="javascript:void(0);">Help</a>
-                                    <a href="javascript:void(0);">Contact Us</a>
+
                                 </div>
                             </div>
                         </div>
@@ -359,6 +375,17 @@
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
+                $('#top-search').on('keyup', function (e) {
+                    var terme = $(this).val();
+                    if(terme.length > 2){
+                        $("#search-dropdown").load("/recherche", {
+                            'terme': terme
+                        });
+                    }else{
+                        $("#search-dropdown").empty();
                     }
                 });
 

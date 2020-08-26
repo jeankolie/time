@@ -14,11 +14,12 @@ class GestionEtudiant
 	public function store($data)
 	{
 		$etudiant = Utilisateur::create([
-			'uui' => (string) Str::uuid(),
+			'uuid' => (string) Str::uuid(),
 			'matricule' => $data->matricule,
 			'nom' => $data->nom, 
 			'prenom' => $data->prenom, 
 			'telephone' => $data->telephone,
+			'email' => $data->email,
 			'password' => Hash::make($data->password), 
 			'type' => 4
 		]);
@@ -40,7 +41,8 @@ class GestionEtudiant
 		$etudiant->update([
 			'matricule' => $data->matricule,
 			'nom' => $data->nom, 
-			'prenom' => $data->prenom, 
+			'prenom' => $data->prenom,
+			'email' => $data->email,
 			'telephone' => $data->telephone
 		]);
 
