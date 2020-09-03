@@ -24,6 +24,12 @@ class HomeController extends Controller
                     'salles' => $salles,
                 ]);
                 break;
+            case 3:
+                return view('backend.forms.professeur.emploi', [
+                    'salles' => $salles,
+                    'annee' => $derniere_annee->id_annee
+                ]);
+                break;
             case 2:
                 $departement = Auth::user()->departement;
 
