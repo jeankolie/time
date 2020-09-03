@@ -37,11 +37,11 @@
                         <div class="text-center">
                             <h2>
                                 <a href="index.html">
-                                    <img src="{{ asset('backend/assets/images/logo-light.png') }}" alt="main-logo" height="24" />
+                                    <img src="{{ asset('backend/assets/images/ucao.png') }}" alt="main-logo" height="64" />
                                 </a>
                             </h2>
 
-                            <h3 class="mt-4 text-white">
+                            <h3 class="mt-1 text-white">
                                 {{ __('Bienvenu :user', ['user' => Auth::user()->prenom.' '.Auth::user()->nom]) }}
                             </h3>
                             <p class="text-white">

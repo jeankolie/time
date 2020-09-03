@@ -98,7 +98,7 @@
                                 <!-- item-->
                                 <a href="{{ route('logout') }}" class="dropdown-item notify-item btn-logout">
                                     <i class="fe-log-out"></i>
-                                    <span href="{{ route('logout') }}">{{ __('Deconnexion') }}</span>
+                                    <span href="{{ route('logout') }}" class="btn-logout">{{ __('Deconnexion') }}</span>
                                 </a>
     
                             </div>

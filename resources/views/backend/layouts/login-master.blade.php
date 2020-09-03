@@ -56,7 +56,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="emailaddress">{{ __('Login') }}</label>
-                                <input class="form-control" type="text" name="telephone">
+                                <input class="form-control" type="text" name="email">
                             </div>
                             <div class="form-group">
                                 <label>{{ __('Mot de passe') }}</label>
