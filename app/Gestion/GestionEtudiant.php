@@ -56,7 +56,7 @@ class GestionEtudiant
 
 	public function delete($key)
 	{
-		Utilisateur::find($key)->delete();
+		Utilisateur::whereUuid($key)->delete();
 		return response()->json(['statut' => true]);
 	}
 }
