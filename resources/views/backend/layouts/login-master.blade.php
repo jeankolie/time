@@ -49,7 +49,7 @@
 
                         <!-- title-->
                         <h4 class="mt-0">Connectez-vous</h4>
-                        <p class="text-muted mb-4">Entrer votre numero ou email et votre mot de passe pour acceder a votre compte.</p>
+                        <p class="text-muted mb-4">Entrer votre numero ou email et votre mot de passe pour acceder à votre compte.</p>
                         @include('backend.layouts.info')
                         <!-- form -->
                         <form method="POST" action="{{ route('login') }}">
@@ -101,16 +101,16 @@
             <div class="auth-fluid-right text-center">
                 <div class="auth-user-testimonial">
                     <h2 class="mb-3 text-white">UCAO-UUCo</h2>
-                    <p class="lead"><i class="mdi mdi-format-quote-open"></i> Gerer votre emploi du temps en toute simplicite <i class="mdi mdi-format-quote-close"></i>
+                    <p class="lead"><i class="mdi mdi-format-quote-open"></i> Gérer votre emploi du temps en toute simplicité <i class="mdi mdi-format-quote-close"></i>
                     </p>
                     <h5 class="text-white">
-                        - Apprendre a Apprendre
+                        - Apprendre à Apprendre
                     </h5>
                     <h5 class="text-white">
-                        - Apprendre a Entreprendre 
+                        - Apprendre à Entreprendre 
                     </h5>
                     <h5 class="text-white">
-                        - Apprendre a Etre Responsable
+                        - Apprendre à Etre Responsable
                     </h5>
                 </div> <!-- end auth-user-testimonial-->
             </div>

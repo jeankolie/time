@@ -42,10 +42,10 @@
                             </h2>
 
                             <h3 class="mt-1 text-white">
-                                {{ __('Bienvenu :user', ['user' => Auth::user()->prenom.' '.Auth::user()->nom]) }}
+                                {{ __('Bienvenue :user', ['user' => Auth::user()->prenom.' '.Auth::user()->nom]) }}
                             </h3>
                             <p class="text-white">
-                                {{ __('Licence: :lic', ['lic' => $licence->nom]) }}, 
+                                {{ __('Niveau: :lic', ['lic' => $licence->nom]) }}, 
                                 {{ __('Departement: :dep', ['dep' => $licence->departement->nom]) }}
                             </p>
                             @foreach ($licence->semestres as $semestre)
@@ -67,7 +67,7 @@
         <!-- end page -->
 
         <footer class="footer footer-alt">
-            2015 - <script>document.write(new Date().getFullYear())</script> &copy; UBold theme by <a href="" class="text-white-50">Coderthemes</a> 
+            <script>document.write(new Date().getFullYear())</script> &copy; Tobi_<a href="" class="text-white-50">UCAO-UUCo</a> 
         </footer>
 
 

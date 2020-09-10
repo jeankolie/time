@@ -221,14 +221,14 @@
 
                             <li>
                                 <a href="{{ route('matieres.index') }}">
-                                    <i class="mdi mdi-account-group-outline"></i>
+                                    <i class="mdi mdi-order-bool-ascending"></i>
                                     <span> Matieres </span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('salles.index') }}">
-                                    <i class="mdi mdi-apps"></i>
+                                    <i data-feather="book"></i>
                                     <span> Salles </span>
                                 </a>
                             </li>
@@ -237,21 +237,21 @@
 
                                 <li>
                                     <a href="{{ route('departements.show', Auth::user()->departement->slug) }}">
-                                        <i class="mdi mdi-apps"></i>
+                                        <i class="mdi mdi-account-group-outline"></i>
                                         <span> Personnels </span>
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="{{ route('professeurs.index') }}">
-                                        <i class="mdi mdi-apps"></i>
+                                        <i class="mdi mdi-account-group-outline"></i>
                                         <span> Professeurs </span>
                                     </a>
                                 </li>
 
                                 <li>
                                     <a href="#sidebarContacts" data-toggle="collapse">
-                                        <i data-feather="book"></i>
+                                        <i class="mdi mdi-account-group-outline"></i>
                                         <span> {{ __('Etudiants') }} </span>
                                         <span class="menu-arrow"></span>
                                     </a>
@@ -268,7 +268,7 @@
 
                                 <li>
                                     <a href="{{ route('emplois.index') }}">
-                                        <i class="mdi mdi-account-group-outline"></i>
+                                        <i class="mdi mdi-apps"></i>
                                         <span> {{ __('Emplois') }} </span>
                                     </a>
                                 </li>
@@ -276,7 +276,7 @@
 
                             <li>
                                 <a href="{{ route('profil.index') }}">
-                                    <i class="mdi mdi-account-group-outline"></i>
+                                    <i class="mdi mdi-account"></i>
                                     <span> {{ __('Mon compte') }} </span>
                                 </a>
                             </li>
