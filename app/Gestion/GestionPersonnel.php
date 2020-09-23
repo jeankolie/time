@@ -7,7 +7,8 @@ namespace App\Gestion;
 use App\Models\{Annee, Utilisateur};
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
-
+use App\Mail\CreateUser;
+use Illuminate\Support\Facades\Mail;
 
 class GestionPersonnel
 {
@@ -16,8 +17,7 @@ class GestionPersonnel
 	{
 		$otp = generate_code(5);
 
-
-		Utilisateur::create([
+		$user = Utilisateur::create([
 			'uuid' => (string) Str::uuid(),
 			'nom' => $data->nom, 
 			'prenom' => $data->prenom, 
@@ -27,6 +27,10 @@ class GestionPersonnel
 			'type' => 2,
 			'id_departement' => $data->departement
 		]);
+
+		$message = "$otp";
+
+		Mail::to($user->email)->send(new CreateUser($user, $message));
 
 		return trans("Utilisateur creer avec success: opt: $otp");
 	}

@@ -4,10 +4,12 @@ namespace App\Gestion;
  * Gestion categorie
  */
 
-use App\Models\Utilisateur as Professeur;
+use App\Models\Utilisateur;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\CreateUser;
+use Illuminate\Support\Facades\Mail;
 
 
 class GestionProfesseur
@@ -19,7 +21,7 @@ class GestionProfesseur
 
 		$departement = Auth::user()->departement->id_departement;
 
-		Professeur::create([
+		$user = Utilisateur::create([
 			'uuid' => (string) Str::uuid(),
 			'nom' => $data->nom, 
 			'prenom' => $data->prenom, 
@@ -29,6 +31,10 @@ class GestionProfesseur
 			'type' => 3,
 			'id_departement' => $departement
 		]);
+
+		$message = "$otp";
+
+		Mail::to($user->email)->send(new CreateUser($user, $message));
 
 		return trans("Professeur enregistrer avvec success: $otp");
 	}
@@ -40,7 +46,7 @@ class GestionProfesseur
 
 	public function delete($key)
 	{
-		Professeur::find($key)->delete();
+		Utilisateur::find($key)->delete();
 		return response()->json(['statut' => true]);
 	}
 }

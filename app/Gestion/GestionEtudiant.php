@@ -7,12 +7,16 @@ namespace App\Gestion;
 use App\Models\{Annee, Utilisateur, Inscrire};
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Mail\CreateUser;
+use Illuminate\Support\Facades\Mail;
 
 class GestionEtudiant
 {
 	
 	public function store($data)
 	{
+		$password = $data->password;
+		
 		$etudiant = Utilisateur::create([
 			'uuid' => (string) Str::uuid(),
 			'matricule' => $data->matricule,
@@ -30,6 +34,10 @@ class GestionEtudiant
 			'id_licence' => $data->licence, 
 			'date_inscription' => date('Y-m-d')
 		]);
+
+		$message = "$password";
+
+		Mail::to($etudiant->email)->send(new CreateUser($etudiant, $message));
 
 		return trans('Etudiant creer avec success');
 	}
