@@ -127,7 +127,7 @@ function send_sms($message, $telephone)
 	try {
 		$client = SMSClient::getInstance('XwqfbBGfmJkRT1fKSC3AivGUCYpUal0C', 'SQjKey0hAUWebzSP');
 		$sms = new SMS($client);
-		$sms->message($message)->from('+224621432305')->to("00224".$telephone)->send();
+		$sms->message($message)->from('+224621432305')->to("+224".$telephone)->send();
 		return true;
 	} catch (\GuzzleHttp\Exception\ConnectException $e) {
 		return false;
