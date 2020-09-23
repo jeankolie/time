@@ -35,13 +35,13 @@
                             <div class="auth-logo">
                                 <a href="" class="logo logo-dark text-center">
                                     <span class="logo-lg">
-                                        <img src="{{ asset('backend/assets/images/ucao.png') }}" alt="" height="100">
+                                        <img src="{{ asset('backend/assets/images/ucao.png') }}" alt="" height="120">
                                     </span>
                                 </a>
             
                                 <a href="" class="logo logo-light text-center">
                                     <span class="logo-lg">
-                                        <img src="{{ asset('backend/assets/images/ucao.png') }}" alt="" height="100">
+                                        <img src="{{ asset('backend/assets/images/ucao.png') }}" alt="" height="120">
                                     </span>
                                 </a>
                             </div>
