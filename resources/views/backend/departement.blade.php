@@ -30,7 +30,7 @@
 		                    <tr>
 		                        <th>#</th>
 		                        <th>{{ __('Departement') }}</th>
-		                        <th class="text-right">{{ __('Licences') }}</th>
+		                        <th class="text-right">{{ __('Niveaux') }}</th>
 		                        <th class="text-right">{{ __('Actions') }}</th>
 		                    </tr>
 		                </thead>
