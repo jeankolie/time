@@ -16,6 +16,8 @@ class GestionEtudiant
 	public function store($data)
 	{
 		$password = $data->password;
+		$email = $data->email;
+		$telephone = $data->telephone;
 		
 		$etudiant = Utilisateur::create([
 			'uuid' => (string) Str::uuid(),
@@ -35,7 +37,9 @@ class GestionEtudiant
 			'date_inscription' => date('Y-m-d')
 		]);
 
-		$message = "$password";
+		$message = "Vos identifiants sont: Login: $email ou $telephone et Mot de passe:$password";
+
+		send_sms($message, $telephone);
 
 		Mail::to($etudiant->email)->send(new CreateUser($etudiant, $message));
 

@@ -19,6 +19,9 @@ class GestionProfesseur
 	{
 		$otp = generate_code(5);
 
+		$email = $data->email;
+		$telephone = $data->telephone;
+
 		$departement = Auth::user()->departement->id_departement;
 
 		$user = Utilisateur::create([
@@ -32,7 +35,9 @@ class GestionProfesseur
 			'id_departement' => $departement
 		]);
 
-		$message = "$otp";
+		$message = "Vos identifiants sont: Login: $email ou $telephone et Mot de passe: $otp";
+
+		send_sms($message, $telephone);
 
 		Mail::to($user->email)->send(new CreateUser($user, $message));
 

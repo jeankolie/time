@@ -5,6 +5,8 @@ use App\Models\{Media, Parametre, Enseigner, Annee};
 use Illuminate\Support\Facades\Storage;
 use \PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 use \PhpOffice\PhpSpreadsheet\Writer\Csv;
+use Mediumart\Orange\SMS\SMS;
+use Mediumart\Orange\SMS\Http\SMSClient;
 
 function clear_image_directorie($classe, $path = 'public/media'){
 	$deletes = collect();
@@ -122,7 +124,14 @@ function dateFormat($date, $type = 'table'){
 
 function send_sms($message, $telephone)
 {
-	
+	try {
+		$client = SMSClient::getInstance('XwqfbBGfmJkRT1fKSC3AivGUCYpUal0C', 'SQjKey0hAUWebzSP');
+		$sms = new SMS($client);
+		$sms->message($message)->from('+224621432305')->to("00224".$telephone)->send();
+		return true;
+	} catch (\GuzzleHttp\Exception\ConnectException $e) {
+		return false;
+	}
 }
 
 function generate_otp($n = 6) {

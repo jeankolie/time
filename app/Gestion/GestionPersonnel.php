@@ -17,6 +17,9 @@ class GestionPersonnel
 	{
 		$otp = generate_code(5);
 
+		$email = $data->email;
+		$telephone = $data->telephone;
+
 		$user = Utilisateur::create([
 			'uuid' => (string) Str::uuid(),
 			'nom' => $data->nom, 
@@ -28,7 +31,9 @@ class GestionPersonnel
 			'id_departement' => $data->departement
 		]);
 
-		$message = "$otp";
+		$message = "Vos identifiants sont: Login: $email ou $telephone et Mot de passe: $otp";
+
+		send_sms($message, $telephone);
 
 		Mail::to($user->email)->send(new CreateUser($user, $message));
 
