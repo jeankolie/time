@@ -71,7 +71,7 @@ class GestionDepartement
 
 		if ($old > $new) {
 			while ($old > $new) {
-				$departement->licences()->whereNom("Licence $old")->delete();
+				$departement->licences()->whereNom("Niveau $old")->delete();
 				$old--;
 			}
 		}
@@ -100,9 +100,9 @@ class GestionDepartement
 	public function createLincence($dep, $ordre)
 	{
 		return Licence::firstOrCreate([
-			'nom' => "Licence $ordre",
+			'nom' => "Niveau $ordre",
 			'ordre' => $ordre,
-			'slug' => Str::slug("Licence $ordre"),
+			'slug' => Str::slug("Niveau $ordre"),
 			'id_departement' => $dep->id_departement
 		]);
 	}
