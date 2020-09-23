@@ -63,8 +63,19 @@ class GestionDepartement
 			$ordre = $i+1;
 
 			$licence = $this->createLincence($departement, $ordre);
-			$this->createSemestre($licence, $ordre);
-			$this->createSemestre($licence, $ordre+1);
+			if ($ordre == 1) {
+				$this->createSemestre($licence, 1);
+				$this->createSemestre($licence, 2);
+			}elseif ($ordre == 2) {
+				$this->createSemestre($licence, 3);
+				$this->createSemestre($licence, 4);
+			}elseif ($ordre == 3) {
+				$this->createSemestre($licence, 5);
+				$this->createSemestre($licence, 6);
+			} elseif ($ordre == 4) {
+				$this->createSemestre($licence, 7);
+				$this->createSemestre($licence, 8);
+			}
 		}
 
 		$new = $data->licence;

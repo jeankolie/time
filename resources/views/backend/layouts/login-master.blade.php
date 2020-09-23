@@ -31,17 +31,17 @@
                     <div class="card-body">
 
                         <!-- Logo -->
-                        <div class="auth-brand text-center text-lg-left">
+                        <div class="auth-brand text-center text-lg-center">
                             <div class="auth-logo">
                                 <a href="" class="logo logo-dark text-center">
                                     <span class="logo-lg">
-                                        <img src="{{ asset('backend/assets/images/ucao.png') }}" alt="" height="250">
+                                        <img src="{{ asset('backend/assets/images/ucao.png') }}" alt="" height="100">
                                     </span>
                                 </a>
             
                                 <a href="" class="logo logo-light text-center">
                                     <span class="logo-lg">
-                                        <img src="{{ asset('backend/assets/images/ucao.png') }}" alt="" height="250">
+                                        <img src="{{ asset('backend/assets/images/ucao.png') }}" alt="" height="100">
                                     </span>
                                 </a>
                             </div>

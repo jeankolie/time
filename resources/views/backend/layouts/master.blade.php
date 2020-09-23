@@ -142,7 +142,7 @@
                             </a>
                             <!-- End mobile menu toggle-->
                         </li> 
-                        @if (Auth::user()->type == 3)
+                        @if (Auth::user()->type == 2)
                             <li class="">
                                 <a class="nav-link waves-effect waves-light" href="#">
                                     {{ __('Departement: :dep', ['dep' => Auth::user()->departement->nom]) }}

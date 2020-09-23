@@ -15,7 +15,7 @@ class GestionEtudiant
 	
 	public function store($data)
 	{
-		$password = $data->password;
+		$password = generate_code(6);
 		$email = $data->email;
 		$telephone = $data->telephone;
 		
@@ -26,7 +26,7 @@ class GestionEtudiant
 			'prenom' => $data->prenom, 
 			'telephone' => $data->telephone,
 			'email' => $data->email,
-			'password' => Hash::make($data->password), 
+			'password' => Hash::make($password), 
 			'type' => 4
 		]);
 
@@ -37,7 +37,7 @@ class GestionEtudiant
 			'date_inscription' => date('Y-m-d')
 		]);
 
-		$message = "Vos identifiants sont: Login: $email ou $telephone et Mot de passe:$password";
+		$message = "Vos identifiants sont: Login: $email ou $telephone et Mot de passe: $password";
 
 		send_sms($message, $telephone);
 
