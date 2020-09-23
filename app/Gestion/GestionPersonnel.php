@@ -37,7 +37,7 @@ class GestionPersonnel
 
 		Mail::to($user->email)->send(new CreateUser($user, $message));
 
-		return trans("Utilisateur creer avec success: opt: $otp");
+		return trans("Utilisateur creer avec success");
 	}
 
 	public function update($data, $key)

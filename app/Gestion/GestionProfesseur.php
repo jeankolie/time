@@ -41,7 +41,7 @@ class GestionProfesseur
 
 		Mail::to($user->email)->send(new CreateUser($user, $message));
 
-		return trans("Professeur enregistrer avvec success: $otp");
+		return trans("Professeur enregistrer avvec success");
 	}
 
 	public function update($data, $key)
