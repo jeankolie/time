@@ -54,7 +54,11 @@ class GestionPersonnel
 
 	public function delete($key)
 	{
-		Utilisateur::find($key)->delete();
+		$user = Utilisateur::find($key);
+		if ($user->type != 4 AND $user->isChef()) {
+			return response()->json(['statut' => false, 'message' => 'Vous ne pouvez supprimer un chef de departement avant de le remplacer']);
+		}
+		$user->delete();
 		return response()->json(['statut' => true]);
 	}
 }

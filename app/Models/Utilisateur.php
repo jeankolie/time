@@ -90,6 +90,10 @@ class Utilisateur extends Authenticatable
         if ($this->departement == null) {
             return false;
         }
+
+        if ($this->departement->utilisateur == null) {
+            return false;
+        }
         
         return $this->departement->utilisateur->is($this);
     }

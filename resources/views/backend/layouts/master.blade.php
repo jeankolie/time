@@ -419,10 +419,12 @@
                                             }else{
                                                 document.location.reload(true);
                                             }
+                                        }else{
+                                            $.alert(data.message);
                                         }
                                     },
                                     error: function (xhr, status, error) {
-                                        alert(xhr.responseText);
+                                        //alert(xhr.responseText);
                                     }
                                 });
                             },

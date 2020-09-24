@@ -59,8 +59,7 @@ class DepartementController extends Controller
             'personnels' => Departement::whereSlug($id)
             ->first()
             ->utilisateurs()
-            ->whereType(2)
-            ->orWhere('type', 3)
+            ->whereIn('type', [2, 4])
             ->paginate(10)
         ]);
     }

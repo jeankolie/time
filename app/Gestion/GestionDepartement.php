@@ -26,9 +26,20 @@ class GestionDepartement
 		for ($i=0; $i < $data->licence; $i++) { 
 			$ordre = $i+1;
 
-			$licence = $this->createLincence($dep, $ordre);
-			$this->createSemestre($licence, $ordre);
-			$this->createSemestre($licence, $ordre+1);
+			$licence = $this->createLincence($departement, $ordre);
+			if ($ordre == 1) {
+				$this->createSemestre($licence, 1);
+				$this->createSemestre($licence, 2);
+			}elseif ($ordre == 2) {
+				$this->createSemestre($licence, 3);
+				$this->createSemestre($licence, 4);
+			}elseif ($ordre == 3) {
+				$this->createSemestre($licence, 5);
+				$this->createSemestre($licence, 6);
+			} elseif ($ordre == 4) {
+				$this->createSemestre($licence, 7);
+				$this->createSemestre($licence, 8);
+			}
 		}
 
 		if ($data->has('matiere')) {
